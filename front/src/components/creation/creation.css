@@ -1,0 +1,114 @@
+.remove-btn {
+    margin-right: 0.5rem;
+  }
+  
+  .item-enter {
+    opacity: 0.2;
+    margin-left: -200px;
+  }
+  .item-enter-active {
+    opacity: 1;
+    margin-left: 0;
+    transition: 3s;
+  }
+  .item-exit {
+    opacity: 1;
+    margin-left: -200px;
+    transition: 3s;
+  }
+  .item-exit-active {
+    opacity: 0;
+    margin-left: -200px;
+    transition: 3s;
+  }
+  
+  .btn-dark {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, Helvetica, FreeSans, "Liberation Sans", "Nimbus Sans L",
+      sans-serif;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 50px;
+    height: 82px;
+    color: rgb(245, 245, 245);
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    user-select: none;
+    padding: 0.4em 0.8em;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background: #0c9c0d linear-gradient(#82d18d, #0c9c0d);
+    box-shadow: inset #72de26 0 -1px 1px, inset 0 1px 1px #98ff98,
+      #3caa3c 0 0 0 1px, rgba(0, 0, 0, 0.3) 0 2px 5px;
+    -webkit-animation: pulsate 1.2s linear infinite;
+    animation: pulsate 1.2s linear infinite;
+  }
+  
+  .btn-dark:hover {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    cursor: pointer;
+  }
+  
+  .btn-dark:active {
+    top: 1px;
+    color: #fff;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.3), 0 0 5px #ffd, 0 0 8px #fff;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3), 0 1px 1px #fff,
+      inset 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  @-webkit-keyframes pulsate {
+    50% {
+      color: #fff;
+      text-shadow: 0 -1px rgba(0, 0, 0, 0.3), 0 0 5px #ffd, 0 0 8px #fff;
+    }
+  }
+  @keyframes pulsate {
+    50% {
+      color: #fff;
+      text-shadow: 0 -1px rgba(0, 0, 0, 0.3), 0 0 5px #ffd, 0 0 8px #fff;
+    }
+  }
+  
+  .form-group {
+    width: 100%;
+    font-size: 13px;
+    padding: 6px 0 4px 6px;
+    border: 1px solid #cecece;
+    background: #f6f6f6;
+    border-radius: 8px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    border: 0;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  }
+  
+  .form-control {
+    width: 30%;
+    padding: 6px;
+  }
+  
+  .title {
+    font-size: 20px;
+    color: green;
+  }
+  
+  .wavelength {
+    font-size: 20px;
+    color: green;
+  }
+
+  .frequency {
+    font-size: 20px;
+    color: green;
+  }
+  
+  .block {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+  }
+  
