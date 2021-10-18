@@ -1,20 +1,34 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { thunkObjForData } from "./../../redux/actions/action";
 import "./creation.css";
 
-const CreateNewValue = ({ addItem }) => {
+const CreateNewValue = () => {
   const [title, setTitle] = useState("");
   const [wavelength, setWavelength] = useState("");
   const [frequency, setFrequency] = useState("");
 
-  const changedForTitle = (event) => {
+
+  const values = useSelector((state) => state.values.items);
+  const dispatch = useDispatch();
+
+  const actionForTitle = (event) => {
     setTitle(event.target.value);
   };
-  const changedForWavelength = (event) => {
+  const actionForWavelength = (event) => {
     setWavelength(event.target.value);
   };
-  const changedForFrequency = (event) => {
+  const actionForFrequency = (event) => {
     setFrequency(event.target.value);
-  }; 
+  };
+
+  const handler = (infoForTitle, infoForWavelength, infoForFrequency) => {
+    dispatch(thunkObjForData(infoForTitle,infoForWavelength,infoForFrequency ));
+  };
+
+  const sendDataToRedux = () => {
+    handler(title, wavelength, frequency, values);
+  };
 
 
   return (
@@ -24,7 +38,7 @@ const CreateNewValue = ({ addItem }) => {
         <input
           type="text"
           className="form-control"
-          onChange={changedForTitle}
+          onChange={actionForTitle}
           value={title}
         />
       </div>
@@ -33,7 +47,7 @@ const CreateNewValue = ({ addItem }) => {
         <input
           type="number"
           className="form-control"
-          onChange={changedForWavelength}
+          onChange={actionForWavelength}
           value={wavelength}
         />
       </div>
@@ -42,16 +56,13 @@ const CreateNewValue = ({ addItem }) => {
         <input
           type="number"
           className="form-control"
-          onChange={changedForFrequency}
+          onChange={actionForFrequency}
           value={frequency}
         />
       </div>
       <button
         className="btn-dark"
-        onClick={() => {
-          addItem({ title, wavelength, frequency});
-        }}
-      >
+        onClick={() => sendDataToRedux()}>
         Add value
       </button>
     </div>
