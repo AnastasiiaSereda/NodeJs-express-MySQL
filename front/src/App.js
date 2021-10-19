@@ -9,25 +9,11 @@ import 'materialize-css';
 
 
 function App() {
-  // const [data, setData] = useState(null)
-  // const [arrayList, setArrayList] = useState([]);
-  // const removeItem = (id) => {
-  //   console.log(id);
-  //   setArrayList((beforeArray) => beforeArray.filter((el) => el.id !== id));
-  // };
-  // const addItem = ({ title, wavelength, frequency }) => {
-  //   setArrayList((beforeArray) => [
-  //     { id: new Date().getMilliseconds(), title, wavelength, frequency  },
-  //     ...beforeArray,
-  //   ]);
-  // };
-
   //  useEffect(() =>{
   //  fetch('/api')
   //  .then(response => response.json())
   //  .then(response => setData(response.dataTable))
   // },[])
-
 
   return (
     <div className="App">

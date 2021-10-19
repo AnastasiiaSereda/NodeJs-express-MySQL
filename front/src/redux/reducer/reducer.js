@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
     }
     case CREATE_VALUE:
       console.log(action.data.json);
-      const postData = {
+      const tableData = {
         id: uuidv4(),
         title: action.title,
         wavelength: action.wavelength,
@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
       return {
         ...state.values,
         values: {
-          items: [postData, ...state.values.items],
+          items: [tableData, ...state.values.items],
         },
       };
 
@@ -47,22 +47,31 @@ export default function (state = initialState, action) {
         },
       };
 
-
-    case SAVE_UPDATE: {
-      const { id, title, wavelength, frequency } = action;
-      const updatedArr = state.arr.map((el) => {
-        if (el.id === id) {
-          return { ...el, title, wavelength, frequency };
-        }
-        return el;
-      });
-      return {
-        ...state,
+      case SAVE_UPDATE: {
+        const { id, title, wavelength, frequency } = action;
+        const tableData = {
+          id: uuidv4(),
+          title: action.title,
+          wavelength: action.wavelength,
+          frequency: action.frequency,
+        };
+        const updatedArr = state.values.items.map((el) => {
+          if (el.id === id) {
+            return { ...el, title, wavelength, frequency };
+          }
+          return el;
+        });
+        return {
+          ...state.values,
+          values: {
+            items: [tableData, ...state.values.items],
+          },
         arr: updatedArr,
-      };
-    }
+        };
+      }
 
     default:
       return state;
   }
 }
+
