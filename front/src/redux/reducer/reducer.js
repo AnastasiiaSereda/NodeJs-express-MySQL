@@ -12,6 +12,7 @@ const initialState = {
   },
 };
 
+
 export default function (state = initialState, action) {
   switch (action.type) {
     case LOAD_DATA: {
@@ -49,12 +50,6 @@ export default function (state = initialState, action) {
 
       case SAVE_UPDATE: {
         const { id, title, wavelength, frequency } = action;
-        const tableData = {
-          id: uuidv4(),
-          title: action.title,
-          wavelength: action.wavelength,
-          frequency: action.frequency,
-        };
         const updatedArr = state.values.items.map((el) => {
           if (el.id === id) {
             return { ...el, title, wavelength, frequency };
@@ -64,9 +59,9 @@ export default function (state = initialState, action) {
         return {
           ...state.values,
           values: {
-            items: [tableData, ...state.values.items],
+            items: updatedArr 
           },
-        arr: updatedArr,
+      
         };
       }
 
