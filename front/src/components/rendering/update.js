@@ -8,7 +8,6 @@ const Update = ({  id, title, wavelength, frequency, setUpdate }) => {
   const [updateTitle, setUpdateTitle] = useState(title);
   const [updateWavelength, setUpdateWavelength] = useState(wavelength);
   const [updateFrequency, setUpdateFrequency] = useState(frequency);
-
   const dispatch = useDispatch();
  
 

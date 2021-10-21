@@ -34,14 +34,16 @@ const TableOfValues = () => {
       return <div>No values in the table</div>;
     }
     return (
+      <p>
       <ul className="items" key={"key-" + id}>
         <li className="title">{title}</li>{" "}
         <li className="wavelength"> {wavelength}</li>
         <li className="frequency"> {frequency}</li>
-        <p>
+       </ul>
+       
           {update ? (
-            <Update title={title} wavelength={wavelength} frequency={frequency}
-            id={id} setUpdate={setUpdate} />
+            <Update  id={id} title={title} wavelength={wavelength} frequency={frequency}
+            setUpdate={setUpdate} />
           ) : (
             <>
               <button className="remove-btn" onClick={() => deleteItem(id)}>
@@ -52,8 +54,9 @@ const TableOfValues = () => {
               </button>
               </>
           )}
+          
         </p>
-      </ul>
+     
     );
   });
 
