@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "name": "First wave",
+      "frequancy": "3*10^16 Hz",
+      "length": "20 nm"
+    },
+    {
+      "id": 2,
+      "name": "Second wave",
+      "frequancy": "4*10^16 Hz",
+      "length": "30 nm"
+    },
+    {
+      "id": 3,
+      "name": "Third wave",
+      "frequancy": "5*10^16 Hz",
+      "length": "40 nm"
+    },
+    {
+      "id": 4,
+      "name": "Fourth wave",
+      "frequancy": "6*10^16",
+      "phone": "50 nm"
+    },
+    {
+      "id": 5,
+      "name": "Fifth wave",
+      "frequancy": "7*10^16 Hz",
+      "length": "60 nm"
+    }
+    
+  ]

@@ -6,17 +6,26 @@
     "start": "cross-env NODE_ENV=production node ./bin/server.js",
     "start:dev": "cross-env NODE_ENV=development nodemon ./bin/server.js",
     "lint": "eslint **/*.js",
-    "lint:fix": "eslint --fix **/*.js"
+    "lint:fix": "eslint --fix **/*.js",
+    "front": "npm run start --prefix front",
+    "dev": "concurrently\"npm run server\"\"npm run front\""
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "2.8.5",
     "cross-env": "7.0.3",
     "express": "4.17.1",
+    "fs": "0.0.1-security",
+    "joi": "^17.4.2",
     "morgan": "1.10.0",
-    "mysql": "mysqljs/mysql"
+    "mysql": "mysqljs/mysql",
+    "objectid": "^3.2.1",
+    "path": "^0.12.7",
+    "util": "^0.12.4",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "concurrently": "^6.3.0",
     "eslint": "^7.19.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",

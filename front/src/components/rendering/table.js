@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getApi } from "../../api/CrudApi";
+import { getApi, createValueInApi } from "../../api/CrudApi";
+
 import "./table.css";
 import { ValueList } from "./valueList";
 
 const TableOfValues = () => {
-  const values = useSelector((state) => state.values.items);
+  // const values = useSelector((state) => state.values.items);
   const [data, setData] = useState(null);
 
-  // console.log(get.then);
   useEffect(() => {
     const getData = async () => {
       let response = await getApi();
@@ -16,8 +16,14 @@ const TableOfValues = () => {
     };
     getData();
   }, []);
-  // console.log(data);
+
+  const createValue = async () => {
+    let response = await createValueInApi();
+    setData(response.data.dataTable);
+  };
+
   if (!data) return <p>error</p>;
+
   const valueList = data.map(({ ID, Title, Wavelength, Frequency }) => (
     <ValueList
       data={{
@@ -26,6 +32,7 @@ const TableOfValues = () => {
         wavelength: Wavelength,
         frequency: Frequency,
       }}
+      setData={setData}
     />
   ));
 
