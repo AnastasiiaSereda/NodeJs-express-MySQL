@@ -5,9 +5,9 @@ import { getApi, createValueInApi } from "../../api/CrudApi";
 import "./table.css";
 import { ValueList } from "./valueList";
 
-const TableOfValues = () => {
+const TableOfValues = ({ data, setData }) => {
   // const values = useSelector((state) => state.values.items);
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,10 +17,10 @@ const TableOfValues = () => {
     getData();
   }, []);
 
-  const createValue = async () => {
-    let response = await createValueInApi();
-    setData(response.data.dataTable);
-  };
+  // const createValue = async () => {
+  //   let response = await createValueInApi();
+  //   setData(response.data.dataTable);
+  // };
 
   if (!data) return <p>error</p>;
 

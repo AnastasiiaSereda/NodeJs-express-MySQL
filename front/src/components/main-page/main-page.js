@@ -1,10 +1,10 @@
 import CreateNewValue from "./../creation/creation";
 
-const MainBlockInput = () => {
+const MainBlockInput = ({ data, setData }) => {
   return (
     <div>
       <div className="mainAdd">
-        <CreateNewValue/>
+        <CreateNewValue data={data} setData={setData} />
       </div>
     </div>
   );

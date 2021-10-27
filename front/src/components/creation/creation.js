@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { createValueInApi } from "../../api/CrudApi";
 import { thunkObjForData } from "./../../redux/actions/action";
 import "./creation.css";
 
-const CreateNewValue = () => {
+const CreateNewValue = ({ data, setData }) => {
   const [title, setTitle] = useState("");
   const [wavelength, setWavelength] = useState("");
   const [frequency, setFrequency] = useState("");
-
 
   const values = useSelector((state) => state.values.items);
   const dispatch = useDispatch();
@@ -23,13 +23,30 @@ const CreateNewValue = () => {
   };
 
   const handler = (infoForTitle, infoForWavelength, infoForFrequency) => {
-    dispatch(thunkObjForData(infoForTitle,infoForWavelength,infoForFrequency ));
+    dispatch(
+      thunkObjForData(infoForTitle, infoForWavelength, infoForFrequency)
+    );
   };
 
   const sendDataToRedux = () => {
     handler(title, wavelength, frequency, values);
   };
 
+  const createValue = async () => {
+    let response = await createValueInApi({
+      title,
+      wavelength,
+      frequency,
+    });
+    setData((prev) => [
+      ...prev,
+      {
+        Title: title,
+        Wavelength: wavelength,
+        Frequency: frequency,
+      },
+    ]);
+  };
 
   return (
     <div className="block">
@@ -60,9 +77,7 @@ const CreateNewValue = () => {
           value={frequency}
         />
       </div>
-      <button
-        className="btn-dark"
-        onClick={() => sendDataToRedux()}>
+      <button className="btn-dark" onClick={() => createValue()}>
         Add value
       </button>
     </div>

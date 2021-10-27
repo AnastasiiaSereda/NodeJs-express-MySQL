@@ -11,20 +11,19 @@ const getTable = (req, res, next) => {
 
 const createItem = (req, res, next) => {
   const { title, wavelength, frequency } = req.body;
-  console.log(req.body);
   sql.query(
-    `INSERT INTO Physics (Title, Wavelength, Frequency) VALUES (${title}, ${wavelength}, ${frequency})`,
+    `INSERT INTO Physics (Title, Wavelength, Frequency) VALUES ( '${title}', '${wavelength}', '${frequency}')`,
     (err, data) => {
       if (err) {
-        return "test";
+        return "err";
       }
-      return res.json({ ...req.body });
+      return res.json({ data });
     }
   );
 };
 
 const deleteItem = (req, res, next) => {
-  sql.query(`DELETE FROM Physics WHERE id=3`, (err, data) => {
+  sql.query(`DELETE FROM Physics WHERE id=${id}`, (err, data) => {
     if (err) {
       return;
     }
@@ -34,7 +33,7 @@ const deleteItem = (req, res, next) => {
 
 const updateItem = (req, res, next) => {
   sql.query(
-    `UPDATE Physics SET Title='Zero wave' WHERE id= 2;`,
+    `UPDATE Physics SET Title=${title} WHERE id=${id};`,
     (err, data) => {
       if (err) {
         return;
