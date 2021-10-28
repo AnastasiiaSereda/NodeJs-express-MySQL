@@ -23,6 +23,7 @@ const createItem = (req, res, next) => {
 };
 
 const deleteItem = (req, res, next) => {
+  const { id } = req.body;
   sql.query(`DELETE FROM Physics WHERE id=${id}`, (err, data) => {
     if (err) {
       return;
@@ -32,8 +33,9 @@ const deleteItem = (req, res, next) => {
 };
 
 const updateItem = (req, res, next) => {
+  const { id, title, wavelength, frequency } = req.body;
   sql.query(
-    `UPDATE Physics SET Title=${title} WHERE id=${id};`,
+    `UPDATE Physics SET Title=${title} Wavelength=${wavelength} Frequency=${frequency} WHERE id=${id};`,
     (err, data) => {
       if (err) {
         return;

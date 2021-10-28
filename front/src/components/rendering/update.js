@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { saveUpdate } from "./../../redux/actions/action";
-import { deleteValueFromApi, updateValueInApi } from "../../api/CrudApi";
+// import { useDispatch } from "react-redux";
+// import { saveUpdate } from "./../../redux/actions/action";
+import { updateValueInApi } from "../../api/CrudApi";
 
 const Update = ({ id, title, wavelength, frequency, setUpdate, setData }) => {
   const [updateTitle, setUpdateTitle] = useState(title);
@@ -18,13 +18,13 @@ const Update = ({ id, title, wavelength, frequency, setUpdate, setData }) => {
     };
     console.log(updatedItem);
      await updateValueInApi(updatedItem);
-    // setData((prevValue) =>
-    //   prevValue.map((el) => {
-    //     if (el.id === id) {
-    //       return updatedItem;
-    //     }
-    //   })
-    // );
+    setData((prevValue) =>
+      prevValue.map((el) => {
+        if (el.id === id) {
+          return updatedItem;
+        }
+      })
+    );
   };
   // const saveItem = () => {
   //   setUpdate(false);

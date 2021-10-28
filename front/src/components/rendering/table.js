@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { getApi, createValueInApi } from "../../api/CrudApi";
+import React, { useEffect } from "react";
+// import { useSelector } from "react-redux";
+import { getApi } from "../../api/CrudApi";
 
 import "./table.css";
 import { ValueList } from "./valueList";

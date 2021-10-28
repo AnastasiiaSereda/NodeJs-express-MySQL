@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 // import { removeValue } from "../../redux/actions/action";
 // import { deleteValue, updateValue } from "./table"
-import { deleteValueFromApi, updateValueInApi } from "../../api/CrudApi";
+import { deleteValueFromApi } from "../../api/CrudApi";
 import Update from "./update";
 
 export const ValueList = ({
   data: { id, title, wavelength, frequency },
   setData,
 }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [update, setUpdate] = useState(false);
 
   // const removeItem = (id) => {
