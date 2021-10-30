@@ -9,7 +9,7 @@ const getTable = (req, res, next) => {
   });
 };
 
-const createItem = (req, res, next) => {
+const createItem = (req, res) => {
   const { title, wavelength, frequency } = req.body;
   sql.query(
     `INSERT INTO Physics (Title, Wavelength, Frequency) VALUES ( '${title}', '${wavelength}', '${frequency}')`,
@@ -22,9 +22,10 @@ const createItem = (req, res, next) => {
   );
 };
 
-const deleteItem = (req, res, next) => {
-  const { id } = req.body;
-  sql.query(`DELETE FROM Physics WHERE id=${id}`, (err, data) => {
+const deleteItem = (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  sql.query(`DELETE FROM Physics WHERE id='${id}'`, (err, data) => {
     if (err) {
       return;
     }
@@ -32,15 +33,17 @@ const deleteItem = (req, res, next) => {
   });
 };
 
-const updateItem = (req, res, next) => {
-  const { id, title, wavelength, frequency } = req.body;
+const updateItem = (req, res) => {
+  const { id } = req.params;
+  const { Title, Wavelength, Frequency } = req.body;
   sql.query(
-    `UPDATE Physics SET Title=${title} Wavelength=${wavelength} Frequency=${frequency} WHERE id=${id};`,
+    `UPDATE Physics SET Title='${Title}', Wavelength=${Wavelength}, Frequency=${Frequency} WHERE id=${id};`,
+
     (err, data) => {
       if (err) {
         return;
       }
-      return res.json({ dataTable: data });
+      return res.json({ data });
     }
   );
 };

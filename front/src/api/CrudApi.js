@@ -12,17 +12,13 @@ export const deleteValueFromApi = async (id) => {
   return await axios.delete(`${url}/delete/${id}`);
 };
 
-export const updateValueInApi = async ({
-  id,
-  title,
-  wavelength,
-  frequency,
-}) => {
-  return await axios.patch(`${url}/patch/${id}`, {
-    title,
-    wavelength,
-    frequency,
-  });
+// router.get("/value", getTable);
+// router.post("/value/create", createItem);
+// router.delete("/value/delete", deleteItem);
+// router.patch("/value/update", updateItem);
+
+export const updateValueInApi = async (id, obj) => {
+  return await axios.patch(`${url}/update/${id}`, obj);
 };
 
 // endpoints.patch  = ({id}, toPatch, config={}) => axios.patch(`${resourceURL}/${id}`, toPatch, config)

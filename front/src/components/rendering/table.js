@@ -26,6 +26,7 @@ const TableOfValues = ({ data, setData }) => {
 
   const valueList = data.map(({ ID, Title, Wavelength, Frequency }) => (
     <ValueList
+      key={ID}
       data={{
         id: ID,
         title: Title,

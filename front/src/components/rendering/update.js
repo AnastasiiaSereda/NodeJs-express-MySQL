@@ -3,7 +3,7 @@ import { useState } from "react";
 // import { saveUpdate } from "./../../redux/actions/action";
 import { updateValueInApi } from "../../api/CrudApi";
 
-const Update = ({ id, title, wavelength, frequency, setUpdate, setData }) => {
+const Update = ({ id, title, wavelength, frequency, setData, setUpdate }) => {
   const [updateTitle, setUpdateTitle] = useState(title);
   const [updateWavelength, setUpdateWavelength] = useState(wavelength);
   const [updateFrequency, setUpdateFrequency] = useState(frequency);
@@ -11,21 +11,23 @@ const Update = ({ id, title, wavelength, frequency, setUpdate, setData }) => {
 
   const updateValue = async (id) => {
     const updatedItem = {
-      id,
-      title: updateTitle,
-      wavelength: updateWavelength,
-      frequency: updateFrequency,
+      Title: updateTitle,
+      Wavelength: updateWavelength,
+      Frequency: updateFrequency,
     };
-    console.log(updatedItem);
-     await updateValueInApi(updatedItem);
-    setData((prevValue) =>
-      prevValue.map((el) => {
-        if (el.id === id) {
+
+    await updateValueInApi(id, updatedItem);
+    setUpdate(false)
+    setData((prevState) =>
+      prevState.map((el) => {
+        if (el.ID === id) {
           return updatedItem;
         }
+        return el;
       })
     );
   };
+
   // const saveItem = () => {
   //   setUpdate(false);
   //   dispatch(saveUpdate(updateTitle,updateWavelength,updateFrequency,id));
@@ -56,6 +58,7 @@ const Update = ({ id, title, wavelength, frequency, setUpdate, setData }) => {
           setUpdateFrequency(e.target.value);
         }}
       />
+
       <button
         className="update-btn"
         onClick={() => {

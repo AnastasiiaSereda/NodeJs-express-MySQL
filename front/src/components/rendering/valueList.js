@@ -9,8 +9,8 @@ export const ValueList = ({
   data: { id, title, wavelength, frequency },
   setData,
 }) => {
-  // const dispatch = useDispatch();
   const [update, setUpdate] = useState(false);
+  // const dispatch = useDispatch();
 
   // const removeItem = (id) => {
   //   dispatch(removeValue(id));
@@ -23,14 +23,21 @@ export const ValueList = ({
   const updateItem = () => {
     setUpdate(true);
   };
+
   const deleteValue = async (id) => {
-    await deleteValueFromApi();
-    setData((prevState) => prevState.filter((item) => item.id !== id));
+    try {
+      await deleteValueFromApi(id);
+      setData((prevState) => {
+        return prevState.filter((item) => item.ID !== id);
+      });
+    } catch (error) {
+      alert("error");
+    }
   };
 
   return (
-    <p>
-      <ul className="items" key={id}>
+    <div>
+      <ul className="items">
         <li className="title">{title}</li>{" "}
         <li className="wavelength"> {wavelength}</li>
         <li className="frequency"> {frequency}</li>
@@ -55,6 +62,6 @@ export const ValueList = ({
           </button>
         </>
       )}
-    </p>
+    </div>
   );
 };
